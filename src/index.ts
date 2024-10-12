@@ -35,11 +35,15 @@ async function main() {
     console.log("Count of rows returned: ", response.rowCount);
     // output: Count of rows returned: 1000
 
+    // Strategy 2: Uses json aggregation to query the data
+
     const sql = db.query.sites.findMany({
         with: {
             siteUrlSlugs: true
         }
     }).toSQL();
+
+    // either we can we the query method or do json aggregation with select
 
     console.log("SQL with json aggregation");
     console.log(sql);
